@@ -1,0 +1,108 @@
+﻿@model ML.Usuario 
+@{
+    ViewBag.Title = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+    <div class="container">
+        <h2>Usuarios</h2>
+        <div class="row" >
+            <div style="float:right">
+               @Html.ActionLink("+", "Form", "Usuario", htmlAttributes: new { @class ="btn btn-success"})
+            </div>
+            
+        </div>
+        <hr />
+        <div class="row">
+            @*<div class="table-responsive">*@
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <!--<th>IdUsuario</th>-->
+                            <th>Nombre</th>
+                            <!--<th>Apellido Paterno</th>-->
+                            <!--<th>Apellido Materno</th>-->
+                            <th>Sexo</th>
+                            <th>Email</th>
+                            <th>UserName</th>
+
+                            <th>Telefono</th>
+                            <th>Celular</th>
+                            <th>CURP</th>
+                            @*<th>IdRol</th>*@
+                            <th>NombreRol</th>
+                            <th>Imagen</th>
+
+                            <th>Direccion</th>
+                            @*<th>Calle</th>*@
+                            @*<th>NúmeroInterior</th>*@
+                            @*<th>NúmeroExterior</th>*@
+                            @*<th>IdColonia</th>*@
+                            @*<th>NombreColonia</th>*@
+                            @*<th>CódigoPostal</th>*@
+                            @*<th>IdMunicipio</th>*@
+                            @*<th>MunicipioNombre</th>*@
+                            @*<th>IdEstado</th>*@
+                            @*<th>EstadoNombre</th>*@
+                            @*<th>IdPais</th>*@
+                            @*<th>PaisNombre</th>*@
+
+
+                            <th>Editar</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (ML.Usuario usuario in Model.Usuarios)
+                             {
+                        <tr>
+                            <td class="hidden">@usuario.IdUsuario</td>
+                            <td>@usuario.Nombre @usuario.ApellidoPaterno @usuario.ApellidoMaterno</td>
+                            <td>@usuario.Sexo</td>
+                            <td>@usuario.Email</td>
+                            <td>@usuario.UserName</td>
+
+                            <td>@usuario.Telefono</td>
+                            <td>@usuario.Celular</td>
+                            <td>@usuario.CURP</td>
+                            <td class="hidden">@usuario.Rol.IdRol</td>
+                            <td>@usuario.Rol.Nombre</td>
+                            @if (usuario.Imagen != null)
+                            {
+                                <td><img src="data:image/jpeg;base64,@Convert.ToBase64String(usuario.Imagen)" style=" height: 150px; width: 150px;" /></td>
+                            }
+                            else
+                            {
+                        <td><img src="~/Imagen/UsarioImagen.png" style=" height: 150px; width: 160px;" /></td>
+                            }
+
+
+                            <td class="hidden">@usuario.Direccion.IdDireccion</td>
+                            <td>@usuario.Direccion.Calle, #@usuario.Direccion.NumeroInterior, #@usuario.Direccion.NumeroExterior, @usuario.Direccion.Colonia.Nombre, @usuario.Direccion.Colonia.CodigoPostal, @usuario.Direccion.Colonia.Municipio.Nombre, @usuario.Direccion.Colonia.Municipio.Estado.Nombre, @usuario.Direccion.Colonia.Municipio.Estado.Pais.Nombre </td>
+
+
+                            <td class="hidden">@usuario.Direccion.Colonia.IdColonia</td>
+
+
+                            <td class="hidden">@usuario.Direccion.Colonia.Municipio.IdMunicipio</td>
+
+                            <td class="hidden">@usuario.Direccion.Colonia.Municipio.Estado.IdEstado</td>
+
+                            <td class="hidden">@usuario.Direccion.Colonia.Municipio.Estado.Pais.IdPais</td>
+
+
+
+                            <td class="text-center"><a class="btn btn-warning glyphicon glyphicon-edit" href="@Url.Action("Form","Usuario", new { IdUsuario = usuario.IdUsuario})"></a></td>
+                            <td class="text-center"><a class="btn btn-danger glyphicon glyphicon-trash" href="@Url.Action("Delete","Usuario", new { IdUsuario = usuario.IdUsuario })" onclick="return confirm('Estas seguro que deseas eliminar este registro?');"></a></td>
+                        </tr>
+                             }
+                    </tbody>
+                </table>
+
+            @*</div>*@
+        </div>
+    </div>
+
