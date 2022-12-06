@@ -34,7 +34,7 @@
                             @*<th>IdRol</th>*@
                             <th>NombreRol</th>
                             <th>Imagen</th>
-
+                            <th>Estatus</th>
                             <th>Direccion</th>
                             @*<th>Calle</th>*@
                             @*<th>NúmeroInterior</th>*@
@@ -72,14 +72,14 @@
                             <td>@usuario.Rol.Nombre</td>
                             @if (usuario.Imagen != null)
                             {
-                                <td><img src="data:image/jpeg;base64,@Convert.ToBase64String(usuario.Imagen)" style=" height: 150px; width: 150px;" /></td>
+                                <td><img src="data:image/jpeg;base64, @usuario.Imagen" style=" height: 100px; width: 100px;" /></td>
                             }
                             else
                             {
-                        <td><img src="~/Imagen/UsarioImagen.png" style=" height: 150px; width: 160px;" /></td>
+                                <td><img src="~/Imagen/UsarioImagen.png" style=" height: 100px; width: 100px;" /></td>
                             }
 
-
+                            <td>@usuario.Estatus</td>
                             <td class="hidden">@usuario.Direccion.IdDireccion</td>
                             <td>@usuario.Direccion.Calle, #@usuario.Direccion.NumeroInterior, #@usuario.Direccion.NumeroExterior, @usuario.Direccion.Colonia.Nombre, @usuario.Direccion.Colonia.CodigoPostal, @usuario.Direccion.Colonia.Municipio.Nombre, @usuario.Direccion.Colonia.Municipio.Estado.Nombre, @usuario.Direccion.Colonia.Municipio.Estado.Pais.Nombre </td>
 

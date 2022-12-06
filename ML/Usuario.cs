@@ -23,7 +23,8 @@ namespace ML
 
         public ML.Rol Rol { get; set; }
 
-        public byte[] Imagen { get; set; }
+        public string Imagen { get; set; }
+        public bool Estatus { get; set; }
 
 
         public List<object> Usuarios { get; set; } 

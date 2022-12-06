@@ -16,8 +16,10 @@ namespace PL_MVC.Controllers
         [HttpGet] //Se refiere al actionVerb
         public ActionResult GetAll()
         {
-            ML.Result result = BL.Usuario.GetAllEF();
             ML.Usuario usuario = new ML.Usuario();
+            usuario.Rol = new ML.Rol();
+            ML.Result result = BL.Usuario.GetAllEF(usuario);
+            
             if (result.Correct)
             {
 
@@ -84,15 +86,28 @@ namespace PL_MVC.Controllers
         [HttpPost]
         public ActionResult Form(ML.Usuario usuario)
         {
-            if(usuario.IdUsuario == 0 )
+            HttpPostedFileBase image = Request.Files["inputImagen"];
+
+
+            if (image != null)
             {
-                HttpPostedFileBase FileBase = Request.Files["inputImagen"];  //obtener un archivo en este caso de imagen
+                byte[] ImagenBytes = ConvertToBytes(image);
+
+                usuario.Imagen = Convert.ToBase64String(ImagenBytes);
+            }
 
 
-                if(FileBase.ContentLength > 0 )
-                {
-                    usuario.Imagen = ConvertToBytes(FileBase);
-                }
+            if (usuario.IdUsuario == 0 )
+            {
+                /*HttpPostedFileBase FileBase = Request.Files["inputImagen"]; */ //obtener un archivo en este caso de imagen
+
+
+
+
+                //if(FileBase.ContentLength > 0 )
+                //{
+                //    usuario.Imagen = ConvertToBytes(FileBase);
+                //}
 
 
 
@@ -113,10 +128,10 @@ namespace PL_MVC.Controllers
                 HttpPostedFileBase FileBase = Request.Files["inputImagen"];
 
   
-                    if(FileBase.ContentLength > 0 )
-                    {
-                        usuario.Imagen = ConvertToBytes(FileBase);
-                    }
+                    //if(FileBase.ContentLength > 0 )
+                    //{
+                    //    usuario.Imagen = ConvertToBytes(FileBase);
+                    //}
                 
   
 

@@ -12,19 +12,17 @@ namespace DL_EF
     using System;
     using System.Collections.Generic;
     
-    public partial class Departamento
+    public partial class Proveedor
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Departamento()
+        public Proveedor()
         {
             this.Productoes = new HashSet<Producto>();
         }
     
-        public int IdDepartamento { get; set; }
-        public string Nombre { get; set; }
-        public int IdArea { get; set; }
+        public int IdProveedor { get; set; }
+        public string Telefono { get; set; }
     
-        public virtual Area Area { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Producto> Productoes { get; set; }
     }

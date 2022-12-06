@@ -155,10 +155,10 @@
 
                         <div class="col-md-13">
                             @Html.LabelFor(model => model.Imagen)
-                            <input type="file" name="inputImagen" onchange="readURL(this);">
+                            <input type="file" name="inputImagen" id="inputImagen" onchange=" readURL(this);" >
                             @if (Model.Imagen != null)
                             {
-                                <img id="ImagenPreview" src="data:image/jpeg;base64, @Convert.ToBase64String(Model.Imagen)" width="150" height="150" />
+                                 <img id="ImagenPreview" src="data:image/jpeg;base64, @(Model.Imagen)" width="150" height="150" class="rounded mx-auto d-block" />
                             }
                             else
                             {
@@ -402,6 +402,28 @@
 
         }
     }
+
+
+
+    function validateFile() {
+        var allowedExtension = ['jpg, png'];
+        var fileExtension = document.getElementById('inputImagen').value.split('.').pop().toLowerCase();
+        var isValidFile = false;
+
+        for (var index in allowedExtension) {
+            if (fileExtension === allowedExtension[index]) {
+                isValidFile = true;
+                break;
+            }
+        }
+
+        if (!isValidFile) {
+            alert('Las extension permitida es: *.' + allowedExtension.join(', *.'));
+            document.getElementById('inputImagen').value = "";
+        }
+
+        return isValidFile;
+    };
 </script>
 
 

@@ -667,7 +667,7 @@ namespace BL
 
             return result;
         }
-        public static ML.Result GetAllEF()
+        public static ML.Result GetAllEF(ML.Usuario usuario)
         {
             ML.Result result = new ML.Result();
 
@@ -675,7 +675,10 @@ namespace BL
             {
                 using (DL_EF.LSantosProgramacionNCapasEntities context = new DL_EF.LSantosProgramacionNCapasEntities())
                 {
-                    var usuarios = context.UsuarioGetAll().ToList();
+                    usuario.Rol.IdRol = (usuario.Rol.IdRol == null) ? usuario.Rol.IdRol = 0 : usuario.Rol.IdRol;
+                    usuario.Nombre = (usuario.Nombre == null) ? usuario.Nombre = "" : usuario.Nombre;
+                    usuario.ApellidoPaterno  =(usuario.ApellidoPaterno == null ) ? usuario.ApellidoPaterno = "" : usuario.ApellidoPaterno;
+                    var usuarios = context.UsuarioGetAll(usuario.Nombre, usuario.ApellidoPaterno, usuario.Rol.IdRol).ToList();
 
                     result.Objects = new List<object>();
 
@@ -683,49 +686,50 @@ namespace BL
                     {
                         foreach(var obj in usuarios)
                         {
-                            ML.Usuario usuario = new ML.Usuario();
-                            usuario.IdUsuario = obj.IdUsuario;
-                            usuario.Nombre = obj.Nombre;
-                            usuario.ApellidoPaterno = obj.ApellidoPaterno;
-                            usuario.ApellidoMaterno = obj.ApellidoMaterno;
-                            usuario.FechaNacimiento = obj.FechaNacimiento.ToString("dd-MM-yyyy");
-                            usuario.Sexo = obj.Sexo;
-                            usuario.Email = obj.Email;
-                            usuario.UserName = obj.UserName;
-                            usuario.Password = obj.Password;
-                            usuario.Telefono = obj.Telefono;
-                            usuario.Celular = obj.Celular;
-                            usuario.CURP = obj.CURP;
+                            ML.Usuario usuarioGet = new ML.Usuario();
+                            usuarioGet.IdUsuario = obj.IdUsuario;
+                            usuarioGet.Nombre = obj.Nombre;
+                            usuarioGet.ApellidoPaterno = obj.ApellidoPaterno;
+                            usuarioGet.ApellidoMaterno = obj.ApellidoMaterno;
+                            usuarioGet.FechaNacimiento = obj.FechaNacimiento.ToString("dd-MM-yyyy");
+                            usuarioGet.Sexo = obj.Sexo;
+                            usuarioGet.Email = obj.Email;
+                            usuarioGet.UserName = obj.UserName;
+                            usuarioGet.Password = obj.Password;
+                            usuarioGet.Telefono = obj.Telefono;
+                            usuarioGet.Celular = obj.Celular;
+                            usuarioGet.CURP = obj.CURP;
 
-                            usuario.Rol = new ML.Rol();
-                            usuario.Rol.IdRol = obj.IdRol.Value;
-                            usuario.Rol.Nombre = obj.NombreRol;
-                            usuario.Imagen = obj.Imagen;
+                            usuarioGet.Rol = new ML.Rol();
+                            usuarioGet.Rol.IdRol = obj.IdRol.Value;
+                            usuarioGet.Rol.Nombre = obj.NombreRol;
+                            usuarioGet.Imagen = obj.Imagen;
+                            usuarioGet.Estatus = obj.Estatus;
 
-                            usuario.Direccion = new ML.Direccion();
-                            usuario.Direccion.IdDireccion = obj.IdDireccion;
-                            usuario.Direccion.Calle = obj.Calle;
-                            usuario.Direccion.NumeroInterior = obj.NumeroInterior;
-                            usuario.Direccion.NumeroExterior = obj.NumeroExterior;
+                            usuarioGet.Direccion = new ML.Direccion();
+                            usuarioGet.Direccion.IdDireccion = obj.IdDireccion;
+                            usuarioGet.Direccion.Calle = obj.Calle;
+                            usuarioGet.Direccion.NumeroInterior = obj.NumeroInterior;
+                            usuarioGet.Direccion.NumeroExterior = obj.NumeroExterior;
 
-                            usuario.Direccion.Colonia = new ML.Colonia();
-                            usuario.Direccion.Colonia.IdColonia = obj.IdColonia.Value;
-                            usuario.Direccion.Colonia.Nombre = obj.ColoniaNombre;
-                            usuario.Direccion.Colonia.CodigoPostal = obj.CodigoPostal;
+                            usuarioGet.Direccion.Colonia = new ML.Colonia();
+                            usuarioGet.Direccion.Colonia.IdColonia = obj.IdColonia.Value;
+                            usuarioGet.Direccion.Colonia.Nombre = obj.ColoniaNombre;
+                            usuarioGet.Direccion.Colonia.CodigoPostal = obj.CodigoPostal;
 
-                            usuario.Direccion.Colonia.Municipio = new ML.Municipio();
-                            usuario.Direccion.Colonia.Municipio.IdMunicipio = obj.IdMunicipio.Value;
-                            usuario.Direccion.Colonia.Municipio.Nombre = obj.MunicipioNombre;
+                            usuarioGet.Direccion.Colonia.Municipio = new ML.Municipio();
+                            usuarioGet.Direccion.Colonia.Municipio.IdMunicipio = obj.IdMunicipio.Value;
+                            usuarioGet.Direccion.Colonia.Municipio.Nombre = obj.MunicipioNombre;
 
-                            usuario.Direccion.Colonia.Municipio.Estado = new ML.Estado();
-                            usuario.Direccion.Colonia.Municipio.Estado.IdEstado = obj.IdEstado.Value;
-                            usuario.Direccion.Colonia.Municipio.Estado.Nombre = obj.EstadoNombre;
+                            usuarioGet.Direccion.Colonia.Municipio.Estado = new ML.Estado();
+                            usuarioGet.Direccion.Colonia.Municipio.Estado.IdEstado = obj.IdEstado.Value;
+                            usuarioGet.Direccion.Colonia.Municipio.Estado.Nombre = obj.EstadoNombre;
 
-                            usuario.Direccion.Colonia.Municipio.Estado.Pais = new ML.Pais();
-                            usuario.Direccion.Colonia.Municipio.Estado.Pais.IdPais = obj.IdPais.Value;
-                            usuario.Direccion.Colonia.Municipio.Estado.Pais.Nombre = obj.PaisNombre;
+                            usuarioGet.Direccion.Colonia.Municipio.Estado.Pais = new ML.Pais();
+                            usuarioGet.Direccion.Colonia.Municipio.Estado.Pais.IdPais = obj.IdPais.Value;
+                            usuarioGet.Direccion.Colonia.Municipio.Estado.Pais.Nombre = obj.PaisNombre;
 
-                            result.Objects.Add(usuario);
+                            result.Objects.Add(usuarioGet);
 
                         }
                     }

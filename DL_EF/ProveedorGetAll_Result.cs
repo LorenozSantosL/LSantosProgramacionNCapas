@@ -11,11 +11,9 @@ namespace DL_EF
 {
     using System;
     
-    public partial class DepartamentoGetById_Result
+    public partial class ProveedorGetAll_Result
     {
-        public int IdDepartamento { get; set; }
-        public string Nombre { get; set; }
-        public int IdArea { get; set; }
-        public string AreaNombre { get; set; }
+        public int IdProveedor { get; set; }
+        public string Telefono { get; set; }
     }
 }

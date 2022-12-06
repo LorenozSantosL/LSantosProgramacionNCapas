@@ -16,5 +16,6 @@ namespace DL_EF
         public int IdDepartamento { get; set; }
         public string Nombre { get; set; }
         public int IdArea { get; set; }
+        public string AreaNombre { get; set; }
     }
 }

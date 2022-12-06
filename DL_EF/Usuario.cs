@@ -33,10 +33,11 @@ namespace DL_EF
         public string Celular { get; set; }
         public string CURP { get; set; }
         public Nullable<byte> IdRol { get; set; }
-        public byte[] Imagen { get; set; }
+        public string Imagen { get; set; }
+        public bool Estatus { get; set; }
     
-        public virtual Rol Rol { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Direccion> Direccions { get; set; }
+        public virtual Rol Rol { get; set; }
     }
 }

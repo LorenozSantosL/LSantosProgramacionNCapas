@@ -4,23 +4,27 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5ba08c8a03ff40328d1ef36bdbbc9907" Name="Diagram1">
-        <EntityTypeShape EntityType="LSantosProgramacionNCapasModel.Area" Width="1.5" PointX="5.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="LSantosProgramacionNCapasModel.Departamento" Width="1.5" PointX="8" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="LSantosProgramacionNCapasModel.Rol" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+      <Diagram DiagramId="8c417ef96c7142c09e19668741bbdcb8" Name="Diagram1">
+        <EntityTypeShape EntityType="LSantosProgramacionNCapasModel.Area" Width="1.5" PointX="5.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LSantosProgramacionNCapasModel.Colonia" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LSantosProgramacionNCapasModel.Departamento" Width="1.5" PointX="8" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LSantosProgramacionNCapasModel.Direccion" Width="1.5" PointX="5.25" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LSantosProgramacionNCapasModel.Estado" Width="1.5" PointX="1.5" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LSantosProgramacionNCapasModel.Municipio" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LSantosProgramacionNCapasModel.Pai" Width="1.5" PointX="1.5" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LSantosProgramacionNCapasModel.Producto" Width="1.5" PointX="10.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="LSantosProgramacionNCapasModel.Proveedor" Width="1.5" PointX="8" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LSantosProgramacionNCapasModel.Rol" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
         <EntityTypeShape EntityType="LSantosProgramacionNCapasModel.Usuario" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="LSantosProgramacionNCapasModel.FK_DepartamentoArea" ManuallyRouted="false" />
+        <AssociationConnector Association="LSantosProgramacionNCapasModel.FK_ColoniaMunicipio" ManuallyRouted="false" />
+        <AssociationConnector Association="LSantosProgramacionNCapasModel.FK_DireccionColonia" ManuallyRouted="false" />
+        <AssociationConnector Association="LSantosProgramacionNCapasModel.FK_ProductoDepartamento" ManuallyRouted="false" />
+        <AssociationConnector Association="LSantosProgramacionNCapasModel.FK_DireccionUsuario" ManuallyRouted="false" />
+        <AssociationConnector Association="LSantosProgramacionNCapasModel.FK_EstadoPais" ManuallyRouted="false" />
+        <AssociationConnector Association="LSantosProgramacionNCapasModel.FK_MunicipioEstado" ManuallyRouted="false" />
+        <AssociationConnector Association="LSantosProgramacionNCapasModel.FK_ProductoProveedor" ManuallyRouted="false" />
         <AssociationConnector Association="LSantosProgramacionNCapasModel.FK_UsuarioRol" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="LSantosProgramacionNCapasModel.Colonia" Width="1.5" PointX="7.5" PointY="6.125" />
-        <EntityTypeShape EntityType="LSantosProgramacionNCapasModel.Direccion" Width="1.5" PointX="9.75" PointY="3.375" />
-        <EntityTypeShape EntityType="LSantosProgramacionNCapasModel.Estado" Width="1.5" PointX="3" PointY="6.25" />
-        <EntityTypeShape EntityType="LSantosProgramacionNCapasModel.Municipio" Width="1.5" PointX="5.25" PointY="6.25" />
-        <EntityTypeShape EntityType="LSantosProgramacionNCapasModel.Pai" Width="1.5" PointX="0.75" PointY="6.375" />
-        <AssociationConnector Association="LSantosProgramacionNCapasModel.FK_ColoniaMunicipio" />
-        <AssociationConnector Association="LSantosProgramacionNCapasModel.FK_DireccionColonia" />
-        <AssociationConnector Association="LSantosProgramacionNCapasModel.FK_DireccionUsuario" />
-        <AssociationConnector Association="LSantosProgramacionNCapasModel.FK_EstadoPais" />
-        <AssociationConnector Association="LSantosProgramacionNCapasModel.FK_MunicipioEstado" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

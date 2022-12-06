@@ -53,6 +53,9 @@
     <Compile Include="Area.cs">
       <DependentUpon>LSantosProgramacionNCapas.tt</DependentUpon>
     </Compile>
+    <Compile Include="AreaGetAll_Result.cs">
+      <DependentUpon>LSantosProgramacionNCapas.tt</DependentUpon>
+    </Compile>
     <Compile Include="Colonia.cs">
       <DependentUpon>LSantosProgramacionNCapas.tt</DependentUpon>
     </Compile>
@@ -63,6 +66,9 @@
       <DependentUpon>LSantosProgramacionNCapas.tt</DependentUpon>
     </Compile>
     <Compile Include="DepartamentoGetAll_Result.cs">
+      <DependentUpon>LSantosProgramacionNCapas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DepartamentoGetByIdArea_Result.cs">
       <DependentUpon>LSantosProgramacionNCapas.tt</DependentUpon>
     </Compile>
     <Compile Include="DepartamentoGetById_Result.cs">
@@ -104,7 +110,22 @@
     <Compile Include="PaisGetAll_Result.cs">
       <DependentUpon>LSantosProgramacionNCapas.tt</DependentUpon>
     </Compile>
+    <Compile Include="Producto.cs">
+      <DependentUpon>LSantosProgramacionNCapas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductoGetAll_Result.cs">
+      <DependentUpon>LSantosProgramacionNCapas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductoGetById_Result.cs">
+      <DependentUpon>LSantosProgramacionNCapas.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Proveedor.cs">
+      <DependentUpon>LSantosProgramacionNCapas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProveedorGetAll_Result.cs">
+      <DependentUpon>LSantosProgramacionNCapas.tt</DependentUpon>
+    </Compile>
     <Compile Include="Rol.cs">
       <DependentUpon>LSantosProgramacionNCapas.tt</DependentUpon>
     </Compile>
@@ -122,32 +143,30 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config" />
     <EntityDeploy Include="LSantosProgramacionNCapas.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>LSantosProgramacionNCapas.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
     <None Include="LSantosProgramacionNCapas.edmx.diagram">
       <DependentUpon>LSantosProgramacionNCapas.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="LSantosProgramacionNCapas.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>LSantosProgramacionNCapas.Context.cs</LastGenOutput>
       <DependentUpon>LSantosProgramacionNCapas.edmx</DependentUpon>
+      <LastGenOutput>LSantosProgramacionNCapas.Context.cs</LastGenOutput>
     </Content>
     <Content Include="LSantosProgramacionNCapas.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>LSantosProgramacionNCapas.edmx</DependentUpon>
       <LastGenOutput>LSantosProgramacionNCapas.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
