@@ -12,6 +12,6 @@ namespace ML
         public string Message { get; set; }
         public Exception EX { get; set; }
         public Object Object { get; set; }
-        public List<Object> Objects { get; set; }
+        public List<object> Objects { get; set; }
     }
 }

@@ -443,6 +443,7 @@ namespace BL
 
                             departamento.Area = new ML.Area();
                             departamento.Area.IdArea = obj.IdArea;
+                            departamento.Area.Nombre = obj.AreaNombre;
 
 
                             result.Objects.Add(departamento);

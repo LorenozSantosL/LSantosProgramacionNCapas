@@ -11,12 +11,25 @@ namespace PL_MVC.Controllers
         [HttpGet]
         public ActionResult GetAll()
         {
-            ML.Result result = BL.Departamento.GetAllEF();
-            ML.Departamento departamento = new ML.Departamento();
 
+            //ServiceDepartamento.DepartamentoClient context = new ServiceDepartamento.DepartamentoClient();
+
+            ServiceDepartamento.DepartamentoClient context = new ServiceDepartamento.DepartamentoClient();
+
+            var result = context.GetAll();
+            
+            //ML.Result result = BL.Departamento.GetAllEF();
+            ML.Departamento departamento = new ML.Departamento();
+            departamento.Departamentos = new List<object>();
             if(result.Correct)
             {
-                departamento.Departamentos = result.Objects;
+                //departamento.Departamentos = (ML.Departamento)result.Objects;
+                foreach(var obj in result.Objects)
+                {
+                    departamento.Departamentos.Add(obj);
+                }
+
+                //departamento.Departamentos = result.Objects;
             }
             else
             {
@@ -31,18 +44,27 @@ namespace PL_MVC.Controllers
         {
 
             ML.Departamento departamento = new ML.Departamento();
+          
+            departamento.Area = new ML.Area();
+            ML.Result resultArea = BL.Area.GetAll();
 
             if(IdDepartamento == null)
             {
-                return View();
+                departamento.Area.Areas = resultArea.Objects;
+                return View(departamento);
             }
             else
             {
-                ML.Result result = BL.Departamento.GetByIdEF(IdDepartamento.Value);
+                ServiceDepartamento.DepartamentoClient context = new ServiceDepartamento.DepartamentoClient();
+
+                var result = context.GetById(IdDepartamento.Value);
+
+                //ML.Result result = BL.Departamento.GetByIdEF(IdDepartamento.Value);
 
                 if(result.Correct)
                 {
                     departamento = (ML.Departamento)result.Object;
+                    departamento.Area.Areas = resultArea.Objects;
                     
                 }
                 else
@@ -52,5 +74,71 @@ namespace PL_MVC.Controllers
                 return View(departamento);
             }
         }
+
+
+        [HttpPost]
+        public ActionResult Form(ML.Departamento departamento)
+        {
+            if (departamento.IdDepartamento == 0)
+            {
+                ServiceDepartamento.DepartamentoClient context = new ServiceDepartamento.DepartamentoClient();
+
+                var result = context.Add(departamento);
+
+                //ML.Result result = BL.Departamento.Add(departamento);
+
+                if (result.Correct)
+                {
+                    ViewBag.Message = result.Message;
+                }
+                else
+                {
+                    ViewBag.Message = "Error: " + result.Message;
+                }
+
+            }
+            else
+            {
+                //ML.Result result = BL.Departamento.Update(departamento);
+
+                ServiceDepartamento.DepartamentoClient context = new ServiceDepartamento.DepartamentoClient();
+
+                var result = context.Update(departamento);
+                if (result.Correct)
+                {
+                    ViewBag.Message = result.Message;
+                }
+                else
+                {
+                    ViewBag.Message = "Error: " + result.Message;
+                }
+
+            }
+            return PartialView("Modal");
+        }
+
+
+
+        public ActionResult Delete(int IdDepartamento)
+        {
+            if(IdDepartamento > 0)
+            {
+                ServiceDepartamento.DepartamentoClient context = new ServiceDepartamento.DepartamentoClient();
+
+                var result = context.Delete(IdDepartamento);
+
+                if(result.Correct)
+                {
+                    ViewBag.Message = result.Message;
+                }
+                else
+                {
+                    ViewBag.Message = "Error: " + result.Message;
+                }
+            }
+            return PartialView("Modal");
+        }
+
+
     }
 }

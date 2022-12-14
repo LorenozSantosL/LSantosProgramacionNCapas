@@ -23,6 +23,7 @@
                     <th>IdDepartamento</th>
                     <th>Nombre</th>
                     <th>IdArea</th>
+                    <th>AreaNombre</th>
 
                     <th>Editar</th>
                     <th>Eliminar</th>
@@ -36,9 +37,10 @@
                         <td>@departamento.IdDepartamento</td>
                         <td>@departamento.Nombre</td>
                         <td>@departamento.Area.IdArea</td>
+                        <td>@departamento.Area.Nombre</td>
 
                         <td class="text-center"><a class="btn btn-warning glyphicon glyphicon-edit" href="@Url.Action("Form", "Departamento", new {IdDepartamento = departamento.IdDepartamento})"></a></td>
-                        <td class="text-center"><a class="btn btn-danger glyphicon glyphicon-trash" href="@Url.Action("Form", "Departamento", new {IdDepartamento = departamento.IdDepartamento})" onclick="return confirm('¿Estas seguro que quieres eliminar este registro?');"></a></td>
+                        <td class="text-center"><a class="btn btn-danger glyphicon glyphicon-trash" href="@Url.Action("Delete", "Departamento", new {IdDepartamento = departamento.IdDepartamento})" onclick="return confirm('¿Estas seguro que quieres eliminar este registro?');"></a></td>
                     </tr>
                 }
 

@@ -19,7 +19,7 @@ namespace SL_WCF
 
         public SL_WCF.Result GetAll()
         {
-            ML.Result result = BL.Departamento.GetAll();
+            ML.Result result = BL.Departamento.GetAllEF();
 
             return new SL_WCF.Result { Correct = result.Correct, EX = result.EX, Message = result.Message, Object = result.Object, Objects = result.Objects };
         }

@@ -21,6 +21,6 @@ namespace SL_WCF
         public Object Object { get; set; }
         [DataMember]
         
-        public List<Object> Objects { get; set; }
+        public List<object> Objects { get; set; }
     }
 }
